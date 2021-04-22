@@ -21,3 +21,20 @@
 - Routerの初期化時に、対応する遷移元のViewControllerを引数として渡す。この遷移元ViewControllerはRouterのプロパティとして保持しておく。
 - 画面遷移時にAppDependenciesのメソッドを呼び出すことで、遷移先画面のモジュールの依存解決を行い、その結果として遷移先ViewControllerを取得する。
 - 取得した遷移先ViewControllerに、遷移元ViewControllerからpushなどして遷移させる。
+
+## 第5章 GitHubリポジトリを検索するサンプルコードのテストコード
+
+### Presenterのテスト
+
+- Presenterのロジックに対応するメソッド（サンプルではsearch、selectなど）内の処理は、基本的にdependencyにプロパティとして持たせているinteractorやrouterのメソッド実行のみとなっているので、それらメソッド（interactorで言えばexecute）の出力として自前で用意したテストデータをセットし、それをうまく検証させる感じで実装する。
+
+### Routerのテスト
+
+- RouterTest用クラスのセットアップ時に、テスト用のappDependenciesとテスト用のViewControllerを引数に渡す形で、テストに使うrouterを作成する。
+- routerの画面遷移メソッド（サンプルではpresentDetailなど）を実行した後、表示されるViewController（サンプルではnavigationControllerを使ってpushされる）が期待したViewConrollerと同じかどうかを検証する。
+  - サンプルの検証例： XCTAssertTrue(pushedViewController is AppTestDependencies.TestDouble.DetailViewController)
+
+### Interactorのテスト
+
+- Interactorのテストコードではテストダブルは使わない。
+- サンプルでは、interactor.executeの引数に渡したクロージャ内で、case successの中で取得した値が所望のものになってるか検証させている。
