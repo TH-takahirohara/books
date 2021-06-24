@@ -25,3 +25,5 @@ Type "help" for help.
 shop=#
 ```
 後の章ではこのDBでSQLを実行していく。
+
+# 第1章 データベースとSQL
