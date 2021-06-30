@@ -99,3 +99,41 @@ ALTER TABLE <テーブル名> ADD COLUMN <列の定義>;
 - **テーブル定義を変更したら元に戻せないので注意**
 
 # 第2章 検索の基本
+
+## 2-1 SELECT文の基本
+- テーブルからデータを取り出すときはSELECT文を使う。
+- 基本的なSELECT文
+```
+SELECT <列名>, ...
+  FROM <テーブル名>;
+```
+- SELECT文にはSELECT句とFROM句という2つの「**句**」がある。句はSQL文を構成する要素で、SELECTやFROMなどのキーワードから始まるフレーズ。
+
+### 列に別名をつける
+- SQL文では、ASキーワードを使って、列に別名をつけられる。別名はSELECT文の実行結果を見やすくしたり扱いやすくするために使う。
+- 別名には日本語を使うこともできる。その場合は、別名をダブルクォーテーションで囲む。
+
+### 結果から重複行を省く
+- 重複業を省いて結果を得たいときは、DISTINCTというキーワードを使う。
+```
+例：
+SELECT DISTINCT shohin_bunrui
+  FROM Shohin;
+```
+- DISTINCTは複数列の前にも置くことができる。この場合、複数の列を組み合わせてもなお重複する行が1つにまとめられる。
+- DISTINCTは先頭の列名の前にしか書けない。
+
+### WHERE句
+- SELECT文では、選択したい行の条件をWHERE句で指定する。
+```
+SELECT <列名>, ...
+  FROM <テーブル名>
+  WHERE <条件式>;
+
+例：
+SELECT shohin_mei, shohin_bunrui
+  FROM Shohin
+  WHERE shohin_bunrui = '衣服';
+```
+- WHERE句で指定した条件に合う行をまず選択し、その後にSELECT句で指定された列を出力する。
+- SQLでは句の記述順が決まっており、勝手に変えることはできない。WHERE句はFROM句の直後に置く。
