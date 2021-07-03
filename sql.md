@@ -227,7 +227,7 @@ shohin_bunrui | count
 
 ### WHERE句を使った場合のGROUP BYの動作
 - WHERE句をつけた集約を行う場合、WHERE句で指定した条件で先にレコードが絞り込まれてから集約が行われる。
-- つまり、GROUP BY/WHEREを併用する場合の実行順序は、　FROM -> WHERE -> GROUP BY -> SELECT
+- つまり、**GROUP BY/WHEREを併用する場合の実行順序は、　FROM -> WHERE -> GROUP BY -> SELECT**
 
 ### よくある間違い
 
@@ -239,7 +239,7 @@ shohin_bunrui | count
 - GROUP BY句を使う時は、SELECT句に集約キー以外の列名を書けないので注意。
 
 #### よくある間違い② - GROUP BY句に別の列名を書いてしまう
-- GROUP BY句にSELECT句でつけた別名は使えない。理由は、SELECT句がGROUP BY句よりも後に実行されるから。
+- GROUP BY句にSELECT句でつけた別名（AS ...のやつ）は使えない。理由は、SELECT句がGROUP BY句よりも後に実行されるから。
 
 #### よくある間違い③ - GROUP BY句は結果の順序をソートする？
 - GROUP BY句を使って結果を選択した時、表示の順はランダムである。ソートされるわけではない。
@@ -247,3 +247,25 @@ shohin_bunrui | count
 
 #### よくある間違い④ - WHERE句に集約関数を書いてしまう
 - 集約関数を書ける場所はSELECT句とHAVING句（とORDER BY句）だけ。
+
+## 3-3 集約した結果に条件を指定する
+- GROUP BY句で分けたグループに対して条件を指定して選択する場合はどうするか。
+- WHERE句は「レコード（行）」に対してのみしか条件を指定できない。グループに対する条件指定（「平均値が500」など）には**HAVING句**を使う。
+
+```
+-- HAVING句の構文
+SELECT <列名1>, <列名2>, <列名3>, ...
+  FROM <テーブル名>
+  GROUP BY <列名1>, <列名2>, <列名3>, ...
+  HAVING <グループの値に対する条件>
+```
+- HAVING句はGROUP BY句の後ろに書く。
+
+### HAVING句に書ける要素
+- HAVING句に書ける要素は次の3つ。（GROUP BY句と同じ。）
+  - 定数
+  - 集約関数
+  - GROUP BY句で指定した列名（つまり集約キー）
+
+### HAVING句よりもWHERE句に書いたほうが良い条件
+- 集約キーに対する条件は、HAVING句ではなくWHERE句に書く。
