@@ -300,3 +300,12 @@ ORDER BY hanbai_tanka DESC;
 
 ### ORDER BY句に使える列
 - ORDER BY句では、SELECT句に含まれていない列や集約関数も使える。
+
+# 第4章 データの更新
+
+## 4-1 データの登録 (INSERT文の使い方)
+- テーブルにデータ（行）を登録するにはINSERT文を使う。
+```
+-- INSERT文の基本構文
+INSERT INTO <テーブル名> (列1, 列2, 列3, ...) VALUES (値1, 値2, 値3, ...);
+```
