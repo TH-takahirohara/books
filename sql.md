@@ -349,3 +349,22 @@ SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, shiire_tanka, torokub
   FROM Shohin;
 ```
 - INSERT文内のSELECT文では、WHERE句やGROUP BY句など、どんなSQL構文も使うことができる。（ただし、ORDER BY句は使っても効果がない。）
+
+## 4-2 データの削除 (DELETE文の使い方)
+- データの削除方法は大きく分けて2つある。
+  - 1. DROP TABLE文によって、テーブルそのものを削除する。
+  - 2. DELETE 文によって、テーブルは残したまま、テーブル内のすべての行を削除する。(本章ではこちらを扱う)
+
+### DELETE文の基本構文
+```
+-- 基本構文（全行削除に対応する）
+DELETE FROM <テーブル名>;
+```
+- DELETE文の削除対象はテーブルや列ではなく「レコード（行）」である。「DELETE <列名> FROM <テーブル名>」などとするのは間違い。
+
+### 削除対象を制限したDELETE文（探索型DELETE）
+- 一部の行だけを削除する場合は、WHERE句で条件を記述する。
+```
+DELETE FROM <テーブル名>
+  WHERE <条件>;
+```
