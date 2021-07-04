@@ -488,3 +488,29 @@ AS
 -- DROP VIEW文の構文
 DROP VIEW ビュー名;
 ```
+
+## 5-2 サブクエリ
+- サブクエリは「使い捨てのビュー」であり、ビュー定義のSELECT文をそのままFROM句に持ち込んだもの。
+```
+-- FROM句に直接ビュー定義のSELECT文を書く
+SELECT shohin_bunrui, cnt_shohin
+  FROM (SELECT shohin_bunrui, COUNT(*) AS cnt_shohin
+          FROM Shohin
+          GROUP BY shohin_bunrui) AS ShohinSum;
+```
+- まずFROM句の中のSELECT文（サブクエリ）が実行され、その結果に対して外側のSELECT文が実行される。
+- サブクエリの階層数には原則的に制限はないのでいくらでも増やせる。ただし、読みにくくなる上、パフォーマンスにも悪影響を与えるのであまり回想を深くするのは避けるべき。
+
+### サブクエリの名前
+- サブクエリの名前は原則的に必要なので適切な名前をつける。
+
+### スカラ・サブクエリ
+- スカラ・サブクエリは、戻り値が単一の値（1行1列）になるサブクエリのこと。
+- スカラ・サブクエリの戻り値は、比較演算子の入力として利用できる。
+```
+SELECT shohin_id, shohin_mei, hanbai_tanka
+  FROM Shohin
+  WHERE hanbai_tanka > (SELECT AVG(hanbai_tanka) FROM Shohin);
+```
+- スカラ・サブクエリは、スカラ値が書ける場所、すなわち定数や列名を書くことのできる場所全てに書ける。
+- スカラ・サブクエリを使うときに最も注意すべきことは、「**絶対にサブクエリが複数行を返さないようにする**」ことである。
