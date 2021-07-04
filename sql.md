@@ -584,3 +584,64 @@ CAST(変換前の値 AS 変換するデータ型)
 ```
 COALESCE(データ1, データ2, データ3 ...)
 ```
+
+## 6-2 述語
+- 述語とは戻り値が真理値になる関数のこと。本節では次の述語を学ぶ。
+  - LIKE
+  - BETWEEN
+  - IS NULL, IS NOT NULL
+  - IN
+  - EXISTS
+
+### LIKE述語 - 文字列の部分一致検索
+- 文字列の中に含まれる規則に基づいて検索することを「パターンマッチング」と呼ぶ。
+```
+-- LIKEによる前方一致検索（検索対象の文字列の最初に位置しているレコードだけが選択される検索方法）
+SELECT *
+  FROM SampleLike
+  WHERE strcol LIKE 'ddd%';
+
+-- LIKEによる中間一致検索（検索条件の文字列が検索対象の文字列のどこかに含まれているレコードが選択される検索方法）
+SELECT *
+  FROM SampleLike
+  WHERE strcol LIKE '%ddd%';
+
+-- LIKEによる後方一致検索（検索対象の文字列の最後に位置しているレコードだけが選択される検索方法）
+SELECT *
+  FROM SampleLike
+  WHERE strcol LIKE '%ddd';
+```
+- %は「0文字以上の任意の文字列」を意味する記号。
+- _（アンダーバー）を使うこともできる。これは「任意の1文字」を意味する。
+
+### BETWEEN述語 - 範囲検索
+
+### IS NULL, IS NOT NULL - NULLか非NULLかの判定
+
+### IN述語 - ORの便利な省略形
+```
+SELECT shohin_mei, shiire_tanka
+  FROM Shohin
+  WHERE shiire_tanka IN (320, 500, 5000);
+-- WHERE shiire_tanka = 320 OR shiire_tanka = 500 OR shiire_tanka = 5000と同じ
+```
+- 除外したい場合はNOT INを使う。
+- INとNOT INのどちらも、NULLを選択することはできない。
+
+### IN述語の引数にサブクエリを指定する
+- IN述語は引数にサブクエリを指定できる。
+```
+SELECT shohin_mei, hanbai_tanka
+  FROM Shohin
+  WHERE shohin_id IN (SELECT shohin_id
+                        FROM TenpoShohin
+                        WHERE tenpo_id ='000C');
+-- サブクエリ実行後、次のように展開される。
+-- WHERE shohin_id IN ('0003', '0004', '0006', '0007')
+```
+
+### EXISTS述語
+- EXISTS述語の役割は「"ある条件に合致するレコードの存在有無"を調べること」
+- EXISTSは道側に引数を1つ取り、その引数は常に相関サブクエリである。
+- EXISTSの引数のサブクエリは、慣習的に常に「SELECT *」を使う。
+- NOT EXISTSも使える。
