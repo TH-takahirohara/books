@@ -308,4 +308,44 @@ ORDER BY hanbai_tanka DESC;
 ```
 -- INSERT文の基本構文
 INSERT INTO <テーブル名> (列1, 列2, 列3, ...) VALUES (値1, 値2, 値3, ...);
+
+-- 使用例
+INSERT INTO ShohinIns (shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, shiire_tanka, torokubi) VALUES ('0001', 'Tシャツ', '衣服', 1000, 500, '2009-09-20');
 ```
+- 外側をカッコ()でくくった形式をリストと呼ぶ。列のリストを列リスト、値のリストを値リストという。
+- 原則として、INSERT文は1回の実行で1行を挿入する。
+  - 複数行INSERTもあるが、エラーが出た時にどの行のどの箇所がエラーだったのか特定するのが難しいということと、Oracleでは利用できないことという注意点がある。
+
+### 列リストの省略
+- テーブル名の後の列リストは、テーブルの全列に対してINSERTを行う場合省略できる。
+
+### NULLを挿入する
+- INSERT文で、ある列にNULLを割り当てたい場合は、VALUES句の値リストにNULLをそのまま記述する。ただし、NOT NULL制約のついている列に指定すると当然エラーとなる。
+
+### デフォルト値を挿入する
+- 列にデフォルト値を設定するには、CREATE TABLE文の中で列に対してDEFAULT制約をつける。
+```
+CREATE TABLE ShohinIns
+(...
+hanbai_tanka INTEGER DEFAULT 0, -- 販売単価のデフォルト値を0に設定
+...
+);
+```
+- 利用方法には「明示的な方法」と「暗黙的な方法」の2種類がある。
+  - 1. 明示的にデフォルト値を指定する -> VALUES句にDEFAULTキーワードを指定する。
+  ```
+  INSERT INTO ShohinIns (..., hanbai_tanka, ...) VALUES (..., DEFAULT, ...)
+  ```
+  - 2. 暗黙的にデフォルト値を挿入する -> デフォルト値が設定されている列を、列リストからも値リストからも省略する。
+- 著者の私見では、明示的な書き方がおすすめ。ぱっと見てデフォルト値が利用されていることが分かり、意味が捉えやすいため。
+- デフォルト値が設定されていない列を省略した場合は、NULLが割り当てられる。
+
+### ほかのテーブルからデータをコピーする
+- データを挿入する方法としては、他のテーブルからコピーするという方法もある。INSERT ••• SELECT文を使う。
+```
+-- 商品テーブルのデータを商品コピーテーブルへ「コピー」
+INSERT INTO ShohinCopy (shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, shiire_tanka, torokubi)
+SELECT shohin_id, shohin_mei, shohin_bunrui, hanbai_tanka, shiire_tanka, torokubi
+  FROM Shohin;
+```
+- INSERT文内のSELECT文では、WHERE句やGROUP BY句など、どんなSQL構文も使うことができる。（ただし、ORDER BY句は使っても効果がない。）
