@@ -368,3 +368,44 @@ DELETE FROM <テーブル名>;
 DELETE FROM <テーブル名>
   WHERE <条件>;
 ```
+
+## 4-3 データの更新 (UPDATE文の使い方)
+- テーブルのデータを変更（更新）するにはUPDATE文を使う。
+```
+-- UPDATE文の基本構文（全行同一の値に変更する）
+UPDATE <テーブル名>
+  SET <列名> = <式>;
+```
+
+### 条件を指定したUPDATE文 (探索型UPDATE)
+- 更新対象の行を制限するには、DELETE文の時と同様、WHERE句を使う。
+```
+UPDATE <テーブル名>
+  SET <列名> = <式>
+  WHERE <条件>;
+```
+
+### NULLで更新するには
+- UPDATE文では列をNULLで更新する（NULLクリアと呼ぶ）こともできる。ただし、NOT NULL制約のついていない列に限る。
+```
+例：
+UPDATE Shohin
+  SET torokubi = NULL
+  WHERE shohin_id = '0008';
+```
+
+### 複数列の更新
+- 1つのUPDATE文で複数列の更新ができる。
+```
+-- 1. 列をカンマ区切りで並べる
+UPDATE Shohin
+  SET hanbai_tanka = hanbai_tanka * 10,
+      shiire_tanka = shiire_tanka / 2
+  WHERE shohin_bunrui = 'キッチン用品';
+
+-- 2. 列をカッコで囲むことによるリスト表現
+UPDATE Shohin
+  SET (hanbai_tanka, shiire_tanka) = (hanbai_tanka * 10, shiire_tanka / 2)
+  WHERE shohin_bunrui = 'キッチン用品';
+```
+- 方法1はどのDBMSでも利用できるが、方法2は一部のDBMSでしか使用できないため、方法1が確実。
