@@ -749,3 +749,14 @@ SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei, S.hanbai_tanka
 
 ## 8-1 ウィンドウ関数
 - ウィンドウ関数は別名OLAP関数とも呼ばれる。OLAPとは、データベースを使ってリアルタイムに（=オンラインで）データ分析を行う処理のこと。
+
+```
+-- ウィンドウ関数の構文
+<ウィンドウ関数> OVER ([PARTITION BY <列リスト>]
+                          ORDER BY <ソート用列リスト>)
+```
+
+#### ウィンドウ関数として使える関数
+- ウィンドウ関数は、大きく2種類に分類される。
+  1. 集約関数（SUM, AVG, COUNT, MAX, MIN）をウィンドウ関数として使う
+  2. RANK, DENSE_RANK, ROW_NUMBERなどの**ウィンドウ専用関数**
