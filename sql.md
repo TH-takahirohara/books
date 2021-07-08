@@ -748,3 +748,4 @@ SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei, S.hanbai_tanka
 # 第8章 SQLで高度な処理を行う
 
 ## 8-1 ウィンドウ関数
+- ウィンドウ関数は別名OLAP関数とも呼ばれる。OLAPとは、データベースを使ってリアルタイムに（=オンラインで）データ分析を行う処理のこと。
