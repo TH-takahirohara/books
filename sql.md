@@ -744,3 +744,7 @@ SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei, S.hanbai_tanka
 
 ### 結合の方言と古い構文
 - 結合の古い書き方や方言は、自分で使ってはならない。でも読めるようにはするべき。
+
+# 第8章 SQLで高度な処理を行う
+
+## 8-1 ウィンドウ関数
