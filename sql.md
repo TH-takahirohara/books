@@ -760,3 +760,20 @@ SELECT TS.tenpo_id, TS.tenpo_mei, TS.shohin_id, S.shohin_mei, S.hanbai_tanka
 - ウィンドウ関数は、大きく2種類に分類される。
   1. 集約関数（SUM, AVG, COUNT, MAX, MIN）をウィンドウ関数として使う
   2. RANK, DENSE_RANK, ROW_NUMBERなどの**ウィンドウ専用関数**
+
+### 構文の基本的な使い方 - RANK関数の利用
+- RANKはウィンドウ専用関数で、レコードのランキング（順位）を算出する関数。
+```
+-- 商品分類ごとに販売単価の安い順で並べたランキング
+SELECT shohin_mei, shohin_bunrui, hanbai_tanka,
+       RANK () OVER (PARTITION BY shohin_bunrui
+                         ORDER BY hanbai_tanka) AS ranking
+  FROM Shohin;
+```
+- **PARTITION BY**は、順位をつける対象の範囲を設定している。
+- **ORDER BY**は、どの列を、どんな順序で順位をつけるかを指定する。
+- PARTITION BYがテーブルを横方向にカットし、ORDER BYが縦方向に順序づけのルールを決める役割を持つ。
+- PARTITION BYによって区切られたレコードの部分集合を「**ウィンドウ**」と呼ぶ。この場合のウィンドウは、「窓」ではなく「範囲」を表す。
+
+### PARTITION BYは指定しなくても良い
+- PARTITION BYは必須ではない。指定しないと、テーブル全体が1つの大きなウィンドウとして扱われる。
