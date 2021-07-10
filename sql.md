@@ -875,3 +875,17 @@ SELECT GROUPING(shohin_bunrui) AS shohin_bunrui,
 - 現在広く使われているドライバの規格としては、ODBCとJDBCがある。
 
 ## 9-2 Javaの基礎知識
+- <ファイル名>.javaに、ファイル名と同名のクラスを書き、処理を記述する。
+- `javac <ファイル名>.java`でコンパイルすると、<ファイル名>.classファイルが生成される。
+- `java <ファイル名>.class`で実行する。
+
+## 9-3 JavaからPostgreSQLへ接続する
+- Javaなどのプログラムの世界では、一度に1行しかアクセスしない。そのため複数行にアクセスするときはループ処理を記述する必要がある。
+- ドライバを使うことで、プログラムからSELECT文、DELETE文、UPDATE文、INSERT文などすべてのSQLが実行できる。
+
+#### 9-3 補足
+- JDBCドライバのファイルを指定して実行では、下記のようにするとうまくいった。（Mac）
+  - jarファイルを直接してやるのと、パスの区切り文字にコロンを使う。
+```
+java -cp ../jdbc/postgresql-42.2.23.jar:. DBConnect1
+```
