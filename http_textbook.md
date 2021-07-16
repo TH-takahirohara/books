@@ -227,3 +227,17 @@ HTTPの教科書
 - Vary
   - オリジンサーバーからVaryで指定されたレスポンスを受け取ったプロキシサーバーは、以後はキャッシュしたときのリクエストと同様のVaryに指定されているヘッダーフィールドを持つリクエストに対してのみキャッシュを返すことができる。
 - WWW-Authenticate
+
+## 6.6 エンティティヘッダーフィールド
+- Allow
+- Content-Encoding
+- Content-Language
+- Content-Length
+- Content-Location
+- Content-MD5
+  - コンテンツが偶発的に変更されたことは知ることができるが、悪意を持った改竄は検出できない。
+- Content-Range
+- Content-Type
+  - エンティティボディに含まれるオブジェクトのメディアタイプを伝える。
+- Expires
+- Last-Modified
