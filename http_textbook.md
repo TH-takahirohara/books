@@ -214,3 +214,16 @@ HTTPの教科書
   - リクエストが発生した元のリソースのURIを伝える。
 - TE
 - User-Agent
+
+## 6.5 レスポンスヘッダーフィールド
+- Accept-Ranges
+- Age
+- ETag
+- Location
+- Proxy-Authenticate
+- Retry-After
+- Server
+  - サーバーに実装されているHTTPサーバーのソフトウェアを伝える。
+- Vary
+  - オリジンサーバーからVaryで指定されたレスポンスを受け取ったプロキシサーバーは、以後はキャッシュしたときのリクエストと同様のVaryに指定されているヘッダーフィールドを持つリクエストに対してのみキャッシュを返すことができる。
+- WWW-Authenticate
