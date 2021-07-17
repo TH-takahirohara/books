@@ -448,3 +448,19 @@ HTTPの教科書
 ## 9.4 登場が待たれるHTTP/2.0
 
 ## 9.5 Webサーバー上のファイル管理を行うWebDAV
+
+# 第10章 Webコンテンツで使う技術
+
+## 10.1 HTML
+
+## 10.2 ダイナミックHTML
+
+## 10.3 Webアプリケーション
+- 動的コンテンツ
+- CGI
+- サーブレット
+
+## 10.4 データ配信に利用されるフォーマットや言語
+- XML
+- RSS, Atom
+- JSON - RFC4627「The application/json Media Type for JavaScript Object Notation(JSON)」を参照
