@@ -92,3 +92,11 @@ HTTP: The Definitive Guide
 ### 2.1.1 The dark days before URLs
 
 ## 2.2 URL Syntax
+- ほとんどのURLは一般的なURL構文に準拠しており、異なるURLスキームの間でスタイルや構文が大きく重複しています。
+- ほとんどのURLは9つのパートに分かれる。
+
+```
+<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<qu
+ery>#<frag>
+```
+- これらの構成要素をすべて含むURLはほとんどありません。最も重要な要素はscheme, host, pathです。
