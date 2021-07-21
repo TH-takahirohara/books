@@ -166,3 +166,12 @@ ery>#<frag>
 - いくつかの文字は、URLの中で特別な意味を持つように予約されています。
 
 ### 2.4.4 A Bit More
+
+## 2.5 A sea of schemes
+- httpスキーマは、usernameとpasswordがないこと以外は一般的なURLフォーマットと同じ。デフォルトポートは80。
+- https
+- mailto
+
+## 2.6 the future
+- URN
+- PURL
