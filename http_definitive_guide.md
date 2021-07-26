@@ -2026,3 +2026,15 @@ WWW-Authenticate: Basic realm="Corporate Financials”
   - [2] あまり安全ではありませんが、通常、会社の内部の従業員は、悪意を持ってパスワードを取得しようとは思いません。とはいえ、企業スパイは発生しますし、復讐心に燃えた不満を持つ従業員も存在しますので、悪意を持って取得されると非常に有害となるデータは、より強固なセキュリティスキームの下に置くことが賢明です。
 - 基本認証は、ユーザー名とパスワードを悪意のある人物から隠すために、暗号化されたデータ伝送（SSLなど）と組み合わせることで、安全性を高めることができます。これは一般的な手法です。
 - 安全な暗号化については第14章で説明します。次の章では、Basic認証よりも強力なセキュリティ特性を持つ、より洗練されたHTTP認証プロトコルであるDigest認証について説明します。
+
+# Chapter 13. Digest Authentication
+
+## 13.1 The Improvements of Digest Authentication
+
+## 13.2 Digest Calculations
+
+## 13.3 Quality of Protection Enhancements
+
+## 13.4 Practical Considerations
+
+## 13.5 Security Considerations
