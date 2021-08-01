@@ -2380,3 +2380,21 @@ Proxy-agent: Netscape-Proxy/1.1
 - 図 15-2 は、実際の HTTP メッセージの例を 2 つ示しています。1 つはテキストエンティティを含み、もう 1 つはイメージエンティティを含みます。16進数の値はメッセージの正確な内容を示しています。
   - 図15-2aでは、エンティティボディはバイト番号65で始まり、end-of-headersのCRLFの直後にあります。エンティティボディには、"Hi! I'm a message. "のASCII文字が含まれています。
   - 図15-2bでは、エンティティボディはバイト番号67から始まります。エンティティボディにはGIF画像のバイナリコンテンツが含まれています。GIFファイルは6バイトのバージョン署名、16ビットの幅、16ビットの高さで始まります。この3つを直接エンティティボディで見ることができます。
+
+## 15.2 Content-Length: The Entity's Size
+
+## 15.3 Entity Digests
+
+## 15.4 Media Type and Charset
+
+## 15.5 Content Encoding
+
+## 15.6 Transfer Encoding and Chunked Encoding
+
+## 15.7 Time-Varying Instances
+
+## 15.8 Validators and Freshness
+
+## 15.9 Range Requests
+
+## 15.10 Delta Encoding
