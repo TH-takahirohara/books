@@ -4,6 +4,8 @@ docker基礎からのコンテナ構築
 - この章の操作(DockerでApacheを起動する)のまとめ
 1. Docker Hubでイメージを探す
 2. `docker run`で実行する
+  - 指定するオプションなどは、ドキュメントに書かれているので、それを参考にする。
+  - `docker run`すれば、それだけでコンテナが起動する。
 3. 停止と再開
   - `docker stop <CONTAINER ID or NAME>`で停止、`docker start`で再開。
   - コンテナの状態は`docker ps`で確認できる（起動中のもののみ）停止中のものも含めて確認するときは、`docker ps -a`とする。
