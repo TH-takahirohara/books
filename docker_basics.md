@@ -56,3 +56,9 @@ docker create オプション イメージ名またはイメージID 実行し�
 
 ### docker exec
 - 実行中のコンテナ内を操作したいときはdocker execで/bin/bashなどのシェルを起動する。
+
+# 第7章 複数コンテナをまとめて起動するDocker Compose
+- docker-compose.ymlに起動したコンテナ、ネットワーク、ボリュームの情報を記述する。
+- docker-compose upでまとめて起動。必要なネットワーク、ボリュームも作られる。
+- docker-compose downでまとめて停止・破棄する。ボリュームは残る。
+- コンテナの名前はDocker Composeに基づくものになる、
