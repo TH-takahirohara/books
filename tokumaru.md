@@ -709,3 +709,16 @@ hiddenパラメータのメリットは、hiddenは利用者自身からは書�
 - eval関数ではなくJSON.parseなどの安全なAPIでJSONを解釈する
 - 保険的対策として以下を強く推奨する
   - JSONPを避け、CORSを用いたWeb APIに移行する
+
+### 4.16.3 JSON直接閲覧によるXSS
+#### 概要
+- JSONを返すWeb APIは、通常XMLHttpRequestによるアクセスを想定したものだが、APIが返すレスポンスデータをブラウザで直接閲覧させることにより攻撃が可能になる場合がある。
+
+#### 脆弱性が生まれる原因
+- MIMEタイプの間違いが直接の原因
+
+#### 対策
+- MIMEタイプを正しく設定する（必須）
+- レスポンスヘッダX-Content-Type-Options: nosniffを出力する（強く推奨）
+- 小なり記号などをUnicodeエスケープする（推奨）
+- XMLHttpRequestなどCORS対応の昨日だけから呼び出せるようにする（推奨）
