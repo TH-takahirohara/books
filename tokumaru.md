@@ -779,3 +779,15 @@ hiddenパラメータのメリットは、hiddenは利用者自身からは書�
 - 不備の例
   - オリジンとして"*"を指定する
   - オリジンのチェックをわざと緩和してしまう
+
+### 4.16.9 セキュリティを強化するレスポンスヘッダ
+- Web APIに限らず、常に出力しておくだけでブラウザのセキュリティ機能を強化するHTTPレスポンスヘッダの代表例
+  - X-Frame-Options
+    - 4.5.2 クリックジャッキングで紹介
+  - X-Content-Type-Options
+    - X-Content-Type-Options: nosniffという形で仕様。MIMEタイプの解釈を厳密にする
+  - X-XSS-Protection
+    - 利用者がXSSフィルタの有効化・無効化設定をしていても、当該ページについてXSSフィルタの設定を上書きする
+    - XSSフィルタの動作モードを指定する
+  - Content-Security-Policy
+  - Strict-Transport-Security（HTTP Strict Transport Security; HSTS）
