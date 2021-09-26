@@ -762,3 +762,14 @@ hiddenパラメータのメリットは、hiddenは利用者自身からは書�
 #### 対策
 - X-Content-Type-Options: nosniffヘッダの付与（強く推奨）
 - リクエストヘッダX-Requested-With: XMLHttpRequestの確認（推奨）
+
+### 4.16.7 JSONPの不適切な利用
+- JSONPは、その考案された事情から、極力使用をやめ、CORS対応のAPIに移行することが望ましい。
+
+#### JSONPによる秘密情報提供
+- JSONPにはCORSのようなアクセス制御の仕組みがないため、JSONPによる情報公開は公開情報の提供にとどめ、秘密情報の提供は避けるべき。
+
+#### まとめ
+- JSONPはできるだけ使用せずCORS+JSONに移行する
+- JSONPは公開情報の提供のみに用いる
+- JSONPは信頼できる提供元のみを使用する
