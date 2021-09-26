@@ -791,3 +791,31 @@ hiddenパラメータのメリットは、hiddenは利用者自身からは書�
     - XSSフィルタの動作モードを指定する
   - Content-Security-Policy
   - Strict-Transport-Security（HTTP Strict Transport Security; HSTS）
+
+## 4.17 JavaScriptの問題
+### 4.17.1 DOM Based XSS
+#### 概要
+- JSによる処理の不備が原因でXSSとなる場合もあり、DOM Based XSSと呼ばれる。
+
+#### 攻撃手法と影響
+- innerHTMLによるDOM Based XSS
+- document.writeによるDOM Based XSS
+- XMLHttpRequestのURL未検証の問題
+- jQueryのセレクタの動的生成によるXSS
+- javascriptスキームによるXSS location.hrefに任意の文字列を指定できるなど
+
+#### 脆弱性が生まれる原因
+- DOM操作の際に外部から指定されたHTMLタグなどが有効になってしまう機能を用いている
+  - document.write() innerHTML、jQueryの$()など
+- 外部から指定されたJavaScriptが動くevalなどの機能を用いている
+- XMLHttpRequestのURLが未検証である
+- location.hrefやsrc属性、href属性のURLが未検証である
+
+#### 対策
+- 以下のいずれか
+  - 適切なDOM操作あるいは記号のエスケープ
+  - eval, setTimeout, Functionコンストラクタなどの引数に文字列形式で外部からの値を渡さない
+  - URLのスキームをhttpかhttpsに限定する
+  - jQueryのセレクタは動的生成しない
+  - 最新のライブラリを用いる
+  - XMLHttpRequestのURLを検証する
