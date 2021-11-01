@@ -7,3 +7,7 @@
 - SQLデータ文 insertなど
 - SQLトランザクション文
 - SQLスキーマ文を使って作成されたデータベース要素はすべてデータディクショナリという特別なテーブルに格納される。メタデータ
+
+# 2章 データベースの作成と設定
+- sakilaサンプルデータベース
+- dockerを使う場合([参考](https://qiita.com/okumurakengo/items/727d15e3ab2d22cdb1f8))
