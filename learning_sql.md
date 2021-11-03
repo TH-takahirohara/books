@@ -11,3 +11,10 @@
 # 2章 データベースの作成と設定
 - sakilaサンプルデータベース
 - dockerを使う場合([参考](https://qiita.com/okumurakengo/items/727d15e3ab2d22cdb1f8))
+  - `docker container exec -it sakila mysql -uroot -proot -Dsakila`
+
+## データ型
+### 文字データ
+#### 文字セット
+- シングルバイト、マルチバイト文字セット
+- MySQL 8 のデフォルトはutfmb4
