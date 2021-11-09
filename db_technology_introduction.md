@@ -150,3 +150,25 @@
 - 可変長文字列型（VARCHAR）
 - ラージオブジェクト型（TEXT）　通常はMEDIUM TEXTもしくはLONG TEXTを利用する
 - 文字列型は、まずVARCHAR型の利用を考え、収まらない場合はTEXT型の利用を考える。
+
+### 数値型
+- 整数（INT）
+- 浮動小数点（FLOAT/DOUBLE）
+- 固定小数点（NUMERIC/DECIMAL）　誤差が出ては困るような値に使う
+
+#### 数値型のまとめ
+- 整数：19桁までBIGINT、それより大きい場合はNUMERIC
+- 小数を含む場合：誤差OKならDOUBLE、誤差NGならNUMERIC
+- FLOATは大量に使う場合の領域削減の際のみ利用する。
+
+### 日付時刻型
+- 日付型（DATE）
+- 時刻型（TIME）　時分秒を扱う
+- 日付時刻型（DATETIME）
+- 日付時刻型（TIMESTAMP）
+- INTERVAL　表の定義には使えない。演算に利用する。
+
+### バイナリ型
+- データを「バイナリ列としてそのまま」格納する
+- BINARY, VARBINARY型　BINARYの最大長は255byte, VARBINARYの最大長は65532byte
+- バイナリラージオブジェクト（BLOB）型　VARBINARYを超える長さの場合に、mediumblob, longblobを利用すべき
