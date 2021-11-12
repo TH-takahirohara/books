@@ -200,3 +200,20 @@
 ### DDL: データ定義
 - DBオブジェクト削除時にif existsをつけることが可能。作成時にif not existsをつけることが可能。エラーが出ない。
 - 照合順序（コレーション: Collation）　デフォルトだとutf8_general_ciというコレーションが設定されている。これは大文字・小文字を区別しないもの。区別するための方法が3つある。
+
+### DML: データ操作
+- MySQLでは、CHARもVARCHARも空白埋め比較セマンティクスで比較される。
+- コメント拡張  /*! */
+- ユーザ変数 @variablename
+- ||は論理演算子のORを表す。（SQL標準では||は文字列連結の意味）
+
+#### INSERT
+- バルクINSERT
+- INSERT IGNORE
+
+#### UPDATE
+- INSERT ... ON DUPLICATE UPDATE
+
+#### SELECT
+- SELECTする場合、必要となる列、必要となる行だけをSELECTすることを心がける。
+- SELECT *, SELECT count(*) の使用は止める。
