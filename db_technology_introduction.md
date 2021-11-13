@@ -216,4 +216,13 @@
 
 #### SELECT
 - SELECTする場合、必要となる列、必要となる行だけをSELECTすることを心がける。
-- SELECT *, SELECT count(*) の使用は止める。
+- `SELECT *`, `SELECT count(*)` の使用は止める。
+
+### DCL: データ管理
+- CREATE USER, GRANT文
+- rootのパスワードを忘れてしまった場合
+
+### MySQL独自構文
+- SELECT ... INTO OUTFILE
+- LOAD DATA [LOCAL] INFILE
+- FLUSHオプション
