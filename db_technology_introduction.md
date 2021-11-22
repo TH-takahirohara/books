@@ -289,7 +289,7 @@
 - 最後に起きた外部キーエラー／デッドロックの確認
 
 ### よく利用するSHOWコマンド
-- SHOW PROCESSLIST;
+- `SHOW PROCESSLIST;`
 
 ### INFORMATION SCHEMA
 - 情報スキーマはSQL標準に定義されているもので、データベース上に定義されたオブジェクト（テーブルなど）のメタ情報を取得する
