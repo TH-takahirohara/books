@@ -106,6 +106,10 @@ docker create オプション イメージ名またはイメージID 実行し�
 - この場合、「イメージに含めたいファイル」と「Dockerfile」を1つのディレクトリに置き、それをdocker buildして作るという方法を取る。
 - Dockerfileからイメージを作成することを「ビルド」と言う。
 - Dockerfileや関連ファイルがあるディレクトリで、docker buildコマンドを実行することでビルドする。
+  - myimage01という名前のimageを作る場合のコマンド
+    ```
+    docker build -t myimage01 .
+    ```
 
 ### Dockerfileの命令
 - ファイルコピー　COPY, ADD
