@@ -23,13 +23,14 @@ map<Keyの型, Valueの型> 変数名;
 ```
 
 - mapの操作
+
 | 操作 | 記法 | 計算量 |
 | --- | --- | --- |
-| 値の追加 | 変数[key] = value; | O(logN) |
-| 値の削除 | 変数.erase(key); | O(logN) |
-| 値へのアクセス | 変数.at(key) | O(logN) |
-| 所属判定 | 変数.count(key) | O(logN) |
-| 要素数の取得 | 変数.size() | O(1) |
+| 値の追加 | `変数[key] = value;` | O(logN) |
+| 値の削除 | `変数.erase(key);` | O(logN) |
+| 値へのアクセス | `変数.at(key)` | O(logN) |
+| 所属判定 | `変数.count(key)` | O(logN) |
+| 要素数の取得 | `変数.size()` | O(1) |
 
 ## 3.04.構造体
 - 構造体の定義
