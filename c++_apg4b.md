@@ -2,19 +2,41 @@ C++入門 AtCoder Programming Guide for beginners (APG4b)
 
 ## 3.01.数値型
 int は10^9程度まで
-それより大きな値には int64_t 型を使う
+それより大きな値には `int64_t` 型を使う
 
 ### 数値型の変換　キャスト
+```
 (型)値
 (double)a
+```
 
 double型をint型にキャストすると小数点以下が切り捨てになる。
 
 ### 文字列との変換
-数値型から文字列への変換　to_string関数
-文字列からint型に変換　stoi関数
+- 数値型から文字列への変換　`to_string`関数
+- 文字列からint型に変換　`stoi`関数
 
 ## 3.02.pair/tupleとauto
+### pair/tuple
+- 宣言・初期化
+```
+pair<型1, 型2> 変数名;
+pair<型1, 型2> 変数名(値1, 値2);
+```
+
+- アクセス
+```
+変数名.first   // 1つ目の値
+変数名.second  // 2つ目の値
+```
+
+- pairの生成
+```
+make_pair(値1, 値2)
+pair<型1, 型2>(値1, 値2)
+```
+
+## 3.03.STLのコンテナ
 ### map
 - 連想配列や辞書と呼ばれるデータ構造
 - mapの宣言
